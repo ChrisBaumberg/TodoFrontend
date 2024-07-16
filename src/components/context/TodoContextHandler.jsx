@@ -62,6 +62,7 @@ const TodoProvider = ({children})=>{
        const id = event.detail;
       try{
         await todoService.deleteTodoBackend(id);
+        await todoService.getTodosBackend(setTodos)
       }
       catch(e){
         console.log(`Failed to delete: ${e}`)
@@ -85,7 +86,7 @@ const TodoProvider = ({children})=>{
         try{
           
           await todoService.toggleTodoDoneBackend(id);
-          
+          await todoService.getTodosBackend(id)
         }
         catch (e){
 
